@@ -1,9 +1,10 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+import os
 from PIL import Image
 
-
+STREAMLIT_CLOUD_ROOT_PATH='/app/streamlit_cancer_detection/streamlit_app/'
 title = "Jeu de données et présentation du problème de classification"
 sidebar_name = "Jeu de données et classification"
 
@@ -24,7 +25,7 @@ def run():
         """
     )
 
-    st.image("assets/echantillon.png")
+    st.image(os.path.join(STREAMLIT_CLOUD_ROOT_PATH, "assets/echantillon.png"))
 
     st.markdown("""
         ## Analyse des images
@@ -45,8 +46,8 @@ def run():
     """)
 
 
-    image1 = Image.open("assets/repartition_type.png")
-    image2 = Image.open("assets/repartition_grade.png")
+    image1 = Image.open(os.path.join(STREAMLIT_CLOUD_ROOT_PATH, "assets/repartition_type.png"))
+    image2 = Image.open(os.path.join(STREAMLIT_CLOUD_ROOT_PATH, "assets/repartition_grade.png"))
 
     col1, col2 = st.columns(2)
     #col1.header("Répartition par type")
@@ -63,13 +64,13 @@ def run():
 
     """)
 
-    st.image(Image.open("assets/nombre_img_par_centre.png"))
+    st.image(Image.open(os.path.join(STREAMLIT_CLOUD_ROOT_PATH, "assets/nombre_img_par_centre.png")))
 
     st.markdown("""
 #### Représentation de la répartition des grades des images au sein de quelques lames
     """)
 
-    st.image(Image.open("assets/repartition_lames.png"))
+    st.image(Image.open(os.path.join(STREAMLIT_CLOUD_ROOT_PATH, "assets/repartition_lames.png")))
 
     st.markdown("""
 On peut avoir pour plusieurs images extraites de la même lame des grades différents car la zone épithéliale n&#39;est pas atteinte partout au même niveau. En cas de diagnostic, le grade de la lame globale serait le grade le plus élevé trouvé sur les sous parties de la lame.
@@ -79,10 +80,10 @@ On peut avoir pour plusieurs images extraites de la même lame des grades diffé
 #### Autres analyses
 """)
     with st.expander("Taille des images en fonction du centre ou elles ont été prises"):
-        st.image(Image.open("assets/taille-images.png"))
+        st.image(Image.open(os.path.join(STREAMLIT_CLOUD_ROOT_PATH, "assets/taille-images.png")))
     
     with st.expander("Comparaison de l'intensité de couleur moyenne de l'   image en fonction de cancer ou non"):
-        st.image(Image.open("assets/distribution_couleurs.png"))
+        st.image(Image.open(os.path.join(STREAMLIT_CLOUD_ROOT_PATH, "assets/distribution_couleurs.png")))
 
         st.markdown("""
 On constate qu&#39;évidemment, plus le grade est avancé, plus l&#39;image tendra en moyenne vers des couleurs plus sombres, car le nombre de cellules sera en moyenne plus élevé donc l&#39;image comporte plus de zones sombres associées aux noyaux et cytoplasmes.
@@ -125,13 +126,13 @@ Voici des exemples d&#39;images présentes dans notre dataset et comportant des 
     """)
 
     col1, col2, col3 = st.columns(3)
-    col1.image(Image.open("assets/C19_B028_S21_4.jpeg"))
-    col1.image(Image.open("assets/C02_B198_S21_3.jpeg"))
+    col1.image(Image.open(os.path.join(STREAMLIT_CLOUD_ROOT_PATH, "assets/C19_B028_S21_4.jpeg")))
+    col1.image(Image.open(os.path.join(STREAMLIT_CLOUD_ROOT_PATH, "assets/C02_B198_S21_3.jpeg")))
 
-    col2.image(Image.open("assets/C13_B238_S11_1.jpeg"))
-    col2.image(Image.open("assets/C06_B109_S21_1.jpeg"))
+    col2.image(Image.open(os.path.join(STREAMLIT_CLOUD_ROOT_PATH, "assets/C13_B238_S11_1.jpeg")))
+    col2.image(Image.open(os.path.join(STREAMLIT_CLOUD_ROOT_PATH, "assets/C06_B109_S21_1.jpeg")))
 
-    col3.image(Image.open("assets/C10_B003_S10_3.jpeg"))
+    col3.image(Image.open(os.path.join(STREAMLIT_CLOUD_ROOT_PATH, "assets/C10_B003_S10_3.jpeg")))
 
     st.markdown("""
 Ce type d&#39;erreur est très marginal mais il laisse planer quelques doutes sur la manière dont a été constitué le dataset et sur le fait qu&#39;un opérateur humain en ai vérifié/validé le contenu.
