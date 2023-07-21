@@ -23,7 +23,7 @@ title = "Prédictions du modèle"
 sidebar_name = "Prédictions du modèle"
 
 print(os.getcwd())
-df_test = pd.read_csv("../assets/df_test.csv", dtype=str)
+df_test = pd.read_csv("assets/df_test.csv", dtype=str)
 df_test["name"] = df_test.filename.str.split("/", expand=True)[2]
 df_test.set_index("name", inplace=True)
 
