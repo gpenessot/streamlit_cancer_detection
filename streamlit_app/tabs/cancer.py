@@ -4,7 +4,7 @@ import numpy as np
 import os
 from PIL import Image
 
-STREAMLIT_CLOUD_ROOT_PATH=
+STREAMLIT_CLOUD_ROOT_PATH='/app/streamlit_cancer_detection/streamlit_app/'
 title = "Cancer du col de l'utérus et analyse histologique"
 sidebar_name = "Cancer et analyse histologique"
 
@@ -29,7 +29,7 @@ Une cellule humaine comporte trois régions principales :
 """
     )
 
-    st.image(Image.open(os.path.join("assets/cellule.jpg"))
+    st.image(Image.open(os.path.join(STREAMLIT_CLOUD_ROOT_PATH, "assets/cellule.jpg")))
 
     st.markdown("""
 ## Les tissus
@@ -38,7 +38,7 @@ Un _tissu_ est un ensemble de cellules qui ont une structure semblable et qui re
 """
     )
 
-    st.image(Image.open("assets/tissus.jpg"))
+    st.image(Image.open(os.path.join(STREAMLIT_CLOUD_ROOT_PATH, "assets/tissus.jpg")))
 
     st.markdown("""
 Nous voyons que quatre tissus primaires s&#39;enchevêtrent pour former la trame du corps humain, nous nous concentrerons par la suite sur le _tissu épithélial_ présent, entre-autres, au niveau du col de l&#39;utérus.
@@ -51,7 +51,7 @@ Ci-dessous un schéma d&#39;un _épithélium_ (tissu épithélial) sain :
 """
     )
 
-    st.image(Image.open("assets/Epithelium.jpg"))
+    st.image(Image.open(os.path.join(STREAMLIT_CLOUD_ROOT_PATH, "assets/Epithelium.jpg")))
 
     st.markdown("""
 ## Processus d&#39;obtention d&#39;image pour analyse des tissus
@@ -69,7 +69,7 @@ Les 2 colorants les plus importants utilisés lors de ce processus sont :
 """
     )
 
-    st.image(Image.open("assets/coloration.png"))
+    st.image(Image.open(os.path.join(STREAMLIT_CLOUD_ROOT_PATH, "assets/coloration.png")))
 
     st.markdown("""
 Ci-dessus :
@@ -81,7 +81,7 @@ Les lames sont ensuite photographiées et stockées dans des images de très lar
 """
     )
 
-    st.image("assets/cervix_lame_complete.jpg",width=400)
+    st.image(Image.open(os.path.join(STREAMLIT_CLOUD_ROOT_PATH, "assets/cervix_lame_complete.jpg", width=400)))
 
     st.markdown("""
 ## Analyse du grade de cancer
@@ -95,7 +95,7 @@ Attention à ne pas confondre deux notions distinctes :
 """
     )
 
-    st.image(Image.open("assets/rappel_1.png"))
+    st.image(Image.open(os.path.join(STREAMLIT_CLOUD_ROOT_PATH,"assets/rappel_1.png")))
 
     st.markdown("""
 Ci-dessus, une image en noir et blanc pour clarifier a quoi correspondent les 3 principales différentes zones épithéliales et leur intérêt respectif dans la gradation finale (+ ou -):
@@ -123,7 +123,7 @@ Ci-dessous, des exemples d&#39;images labellisées (grossissement x40) :
 """
     )
 
-    st.image(Image.open("assets/rappel_4.png"))
+    st.image(Image.open(os.path.join(STREAMLIT_CLOUD_ROOT_PATH,"assets/rappel_4.png")))
 
     st.markdown("""
 Il faut savoir que le système de notation des cancers est complexe et qu&#39;il varie en fonction du type de cancer, l&#39;approche ici décrite n&#39;est pas applicable en l&#39;état à tous les cancers.
