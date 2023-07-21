@@ -21,7 +21,7 @@ title = "Prédictions du modèle"
 sidebar_name = "Prédictions du modèle"
 STREAMLIT_CLOUD_ROOT_PATH='/app/streamlit_cancer_detection/streamlit_app/'
 
-df_test = pd.read_csv(join(STREAMLIT_CLOUD_ROOT_PATH,"assets/df_test.csv", dtype=str)
+df_test = pd.read_csv(join(STREAMLIT_CLOUD_ROOT_PATH,"assets/df_test.csv", dtype=str))
 df_test["name"] = df_test.filename.str.split("/", expand=True)[2]
 df_test.set_index("name", inplace=True)
 
