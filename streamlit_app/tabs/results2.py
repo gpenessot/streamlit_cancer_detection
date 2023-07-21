@@ -176,9 +176,10 @@ Certaines images gradcam montrent des éléments qui nous semblent, à notre niv
         col2.write("Même remarque ici, où la zone blanche devrait être totalement délaissée par le réseau.") 
     
     with tab3:
-
-        model = chargement_modele()
-
+        try:
+            model = chargement_modele()
+        except:
+            st.write('Modèle confidentiel')
         option = st.selectbox('Selectionner une image',sorted(df_test.index))
 
         file = df_test.loc[option,"filename"]
