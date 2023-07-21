@@ -27,7 +27,7 @@ df_test.set_index("name", inplace=True)
 
 @st.cache
 def chargement_modele():
-    return load_model(join(STREAMLIT_CLOUD_ROOT_PATH,'model/EfficientNetB7v1-retrain-small-4-A2-model.h5'))
+    return load_model('/app/streamlit_cancer_detection/streamlit_app/model/EfficientNetB7v1-retrain-small-4-A2-model.h5'))
       
 def get_img_array(img_path, size):
     img = tf.keras.preprocessing.image.load_img(img_path, target_size=size)
