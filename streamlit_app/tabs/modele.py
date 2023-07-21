@@ -1,9 +1,10 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+import os
 from PIL import Image
 
-
+STREAMLIT_CLOUD_ROOT_PATH='/app/streamlit_cancer_detection/streamlit_app/'
 title = "Choix du modèle &amp; optimisation"
 sidebar_name = "Choix et optimisation du modèle"
 
@@ -31,7 +32,7 @@ Dans les scénarii avec unfreeze et réentrainement de l&#39;ensemble du modèle
 Nous avons ainsi fait varier les critères suivants :
 """)
 
-    st.image(Image.open("assets/criteres.png"))
+    st.image(Image.open(os.path.join(STREAMLIT_CLOUD_ROOT_PATH, "assets/criteres.png")))
     
     tab1, tab2, tab3, tab4, tab5 = st.tabs(["Modèles", "Transfer Learning", "Taille", "Classification / Regression", "Augmentation de données"])
 
@@ -87,7 +88,7 @@ Tableau général de l&#39;accuracy des modèles entraînés :
         """
     )
 
-    st.image(Image.open("assets/resultats-general.png"))
+    st.image(Image.open(os.path.join(STREAMLIT_CLOUD_ROOT_PATH, "assets/resultats-general.png")))
 
     st.markdown("""
 Pour chaque modèle, nous avons réalisé une évaluation sur un jeu de test distinct (mais identique à chaque fois) comportant 15% des données du jeu d&#39;origine.
@@ -99,7 +100,7 @@ Nous avons calculé pour chaque modèle l&#39;accuracy sur les 4 classes ainsi q
     
     with tab1:
      
-        st.image(Image.open("assets/resultats-transfert.png"))
+        st.image(Image.open(os.path.join(STREAMLIT_CLOUD_ROOT_PATH, "assets/resultats-transfert.png")))
 
         st.markdown("""
     _Accuracy comparées entre les modèles pour une augmentation A2 et des images en 256x256_
@@ -108,11 +109,11 @@ Nous avons calculé pour chaque modèle l&#39;accuracy sur les 4 classes ainsi q
 """)
     
     with tab2:
-        st.image(Image.open("assets/resultats-taille.png"))
+        st.image(Image.open(os.path.join(STREAMLIT_CLOUD_ROOT_PATH, "assets/resultats-taille.png")))
         st.markdown("A une exception près, on ne note pas d&#39;écart de performance entre les modèles entraînés avec les images plein format ou au format réduit.")
 
     with tab3:
-        st.image(Image.open("assets/resultats-augmentation.png"))
+        st.image(Image.open(os.path.join(STREAMLIT_CLOUD_ROOT_PATH, "assets/resultats-augmentation.png")))
         st.markdown("""
     _Images en 256x256_
 
@@ -134,12 +135,12 @@ Notre meilleur modèle est ainsi un Efficient Net B2 sans dropout, avec réentra
     tab1, tab2, tab3 = st.tabs(["Courbe d'entrainement", "Performances sur le jeu de test","Notre modèle versus l'état de l'art"])
     
     with tab1:
-        st.image(Image.open("assets/courbe-entrainement.png"))
+        st.image(Image.open(os.path.join(STREAMLIT_CLOUD_ROOT_PATH, "assets/courbe-entrainement.png")))
 
         st.markdown("Au niveau de l&#39;entraînement du modèle, on note effectivement un saut de performance très conséquent au moment de l&#39;unfreeze de l&#39;ensemble du modèle (à l&#39;epoch 10), suivi d&#39;une convergence assez rapide sur le jeu de validation. A noter un overfit important, étant donné que l&#39;on attend quasiment une accuracy de 1 sur le jeu d&#39;entraînement (vs env. 0.85 sur le jeu de validation)")
         
     with tab2:    
-        st.image(Image.open("assets/matrice-confusion.png"))
+        st.image(Image.open(os.path.join(STREAMLIT_CLOUD_ROOT_PATH, "assets/matrice-confusion.png")))
         st.markdown("On obtient une accuracy de **0.84** et un f1-score de 0.84 également. A noter que l&#39;accuracy binaire (0 vs 1/2/3) obtenue est de **0.9**.")
 
     with tab3:
