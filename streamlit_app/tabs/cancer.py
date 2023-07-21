@@ -81,7 +81,7 @@ Les lames sont ensuite photographiées et stockées dans des images de très lar
 """
     )
 
-    st.image(Image.open(os.path.join(STREAMLIT_CLOUD_ROOT_PATH, "assets/cervix_lame_complete.jpg", width=400)))
+    st.image(Image.open(os.path.join(STREAMLIT_CLOUD_ROOT_PATH, "assets/cervix_lame_complete.jpg"), width=400))
 
     st.markdown("""
 ## Analyse du grade de cancer
