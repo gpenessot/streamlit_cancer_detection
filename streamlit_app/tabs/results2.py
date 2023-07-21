@@ -8,7 +8,6 @@ os.environ['KMP_DUPLICATE_LIB_OK']='True'
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
-
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 
@@ -18,39 +17,16 @@ from tensorflow.keras.models import load_model
 from tensorflow.keras.applications.efficientnet import preprocess_input
 from PIL import Image
 
-
 title = "Prédictions du modèle"
 sidebar_name = "Prédictions du modèle"
 
-print(os.getcwd())
-df_test = pd.read_csv("assets/df_test.csv", dtype=str)
+df_test = pd.read_csv("/app/streamlit_cancer_detection/streamlit_app/assets/df_test.csv", dtype=str)
 df_test["name"] = df_test.filename.str.split("/", expand=True)[2]
 df_test.set_index("name", inplace=True)
-
 
 @st.cache
 def chargement_modele():
     return load_model( 'assets/EfficientNetB7v1-retrain-small-4-A2-model.h5')
-
-
-#test_data_generator = ImageDataGenerator(preprocessing_function=preprocess_input, rescale=1)
-#
-#test_generator = test_data_generator.flow_from_dataframe(df_test,
-#                                                        class_mode="sparse",
-#                                                        shuffle=True,
-#                                                    )
-
-#
-#def afficher_images(generators):
-#  plt.figure(figsize=(15,10))
-#
-#  for i, generator in enumerate(generators):
-#    img, label = generator.next()
-#    for j in range(18):
-#      plt.subplot(3,6,i*6 + j +1)
-#      plt.imshow(img[j]/255)
-#      plt.title( str(int(label[j])))
-#      plt.axis("off")
       
 def get_img_array(img_path, size):
     img = tf.keras.preprocessing.image.load_img(img_path, target_size=size)
@@ -145,9 +121,7 @@ def afficher_resultats(model,file,y):
 
 def run(): 
 
-    st.title(title)
-
-    
+    st.title(title)   
     st.markdown("### Exemples de classifications")
     st.markdown("""
     Des images gradcam ont pu être générées afin d&#39;analyser les zones sur lesquelles notre meilleur modèle construit son choix de classification finale.
