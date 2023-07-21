@@ -178,12 +178,11 @@ Certaines images gradcam montrent des éléments qui nous semblent, à notre niv
     with tab3:
         try:
             model = chargement_modele()
+            option = st.selectbox('Selectionner une image',sorted(df_test.index))
+            file = df_test.loc[option,"filename"]
+            y = df_test.loc[option,"class"]
+            afficher_resultats(model,file,y)
         except:
             st.write('Modèle confidentiel')
-        option = st.selectbox('Selectionner une image',sorted(df_test.index))
 
-        file = df_test.loc[option,"filename"]
-        y = df_test.loc[option,"class"]
-
-        afficher_resultats(model,file,y)
 
