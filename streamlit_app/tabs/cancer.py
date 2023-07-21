@@ -1,9 +1,10 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+import os
 from PIL import Image
 
-
+STREAMLIT_CLOUD_ROOT_PATH=
 title = "Cancer du col de l'utérus et analyse histologique"
 sidebar_name = "Cancer et analyse histologique"
 
@@ -28,7 +29,7 @@ Une cellule humaine comporte trois régions principales :
 """
     )
 
-    st.image(Image.open("assets/cellule.jpg"))
+    st.image(Image.open(os.path.join("assets/cellule.jpg"))
 
     st.markdown("""
 ## Les tissus
